@@ -3,12 +3,14 @@ import mapboxgl from 'mapbox-gl';
 import locations from './locations.json';
 import { Search } from 'lucide-react';
 import './style.css';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 function App() {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const markers = useRef([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredLocations, setFilteredLocations] = useState(locations);
@@ -24,46 +26,49 @@ function App() {
     );
   }, [searchQuery]);
 
+  // Initialize the map only once
   useEffect(() => {
-    if (!map.current) {
-      map.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
-        center: [-2.3, 53.0],
-        zoom: 6.5
-      });
-    }
-  
-    // Clear existing markers
-    map.current?.markers?.forEach(marker => marker.remove());
-  
-    // Add new markers
-    map.current.markers = [];
-  
-    filteredLocations.forEach(loc => {
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-2.3, 53.0],
+      zoom: 6.5
+    });
+
+    map.current.on('load', () => {
+      renderMarkers(filteredLocations);
+    });
+
+    // Clean up on unmount
+    return () => map.current.remove();
+  }, []);
+
+  // Update markers when filteredLocations change
+  useEffect(() => {
+    if (!map.current.loaded()) return;
+    renderMarkers(filteredLocations);
+  }, [filteredLocations]);
+
+  // Function to handle marker rendering
+  const renderMarkers = (locations) => {
+    // Clear existing markers first
+    markers.current.forEach(marker => marker.remove());
+    markers.current = [];
+
+    locations.forEach(loc => {
       const marker = new mapboxgl.Marker({ color: '#ff7f00' })
         .setLngLat([loc.lng, loc.lat])
-        .setPopup(new mapboxgl.Popup().setText(loc.name))
-        .addTo(map.current);
-  
+        .addTo(map.current)
+        .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(loc.name));
+
       marker.getElement().addEventListener('click', () => {
         setSelectedLocation(loc);
         setSidebarOpen(true);
       });
-  
-      map.current.markers.push(marker);
-    });
-  }, [filteredLocations]);
 
-  useEffect(() => {
-    setFilteredLocations(
-      locations.filter(
-        loc =>
-          loc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          loc.address.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
-  }, [searchQuery]);
+      markers.current.push(marker);
+    });
+  };
 
   return (
     <div className="container">
@@ -71,7 +76,7 @@ function App() {
         <button className="toggle-btn" onClick={() => setSidebarOpen(false)}>
           Close
         </button>
-  
+
         <div className="search-box">
           <input
             type="text"
@@ -80,7 +85,7 @@ function App() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-  
+
         <div className="location-details">
           {selectedLocation ? (
             <>
@@ -91,7 +96,7 @@ function App() {
             <p>Click a pin for details.</p>
           )}
         </div>
-  
+
         <div className="search-results">
           {filteredLocations.map((loc, idx) => (
             <div
@@ -107,17 +112,16 @@ function App() {
           ))}
         </div>
       </div>
-  
-      {/* clickable sidebar tab */}
+
       {!sidebarOpen && (
         <div className="sidebar-tab" onClick={() => setSidebarOpen(true)}>
           Open
         </div>
       )}
-  
+
       <div ref={mapContainer} className="map-container"></div>
     </div>
-  );  
+  );
 }
 
 export default App;
