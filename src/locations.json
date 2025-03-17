@@ -1,5 +1,130 @@
 [
-    { "name": "The Horseshoe Inn", "lat": 53.10739058287882, "lng": -2.302822460300821, "address": "Cheshire, UK" },
-    { "name": "Outserve", "lat": 52.8221568056964, "lng": -2.112686315567466, "address": "Stafford, UK" },
-    { "name": "CineWorld Hanley", "lat": 53.0295470302383, "lng": -2.1765576034304788, "address": "Hanley, Stoke On Trent" }
+    {
+      "name":"Outserve Ltd",
+      "lat":52.8221,
+      "lng":-2.1126,
+      "address":"Stafford, UK",
+      "phone":"+44 207 123 4567",
+      "website":"https:\/\/outserve.co.uk"
+    },
+    {
+      "name":"Oxford Street",
+      "lat":51.5145,
+      "lng":-0.1447,
+      "address":"London, UK",
+      "phone":"+44 207 123 4567",
+      "website":"https:\/\/oxfordstreet.co.uk"
+    },
+    {
+      "name":"Bullring & Grand Central",
+      "lat":52.4774,
+      "lng":-1.8948,
+      "address":"Birmingham, UK",
+      "phone":"+44 121 632 1500",
+      "website":"https:\/\/bullring.co.uk"
+    },
+    {
+      "name":"Buchanan Street",
+      "lat":55.8611,
+      "lng":-4.2537,
+      "address":"Glasgow, UK",
+      "phone":"+44 141 552 6165",
+      "website":"https:\/\/peoplemakeglasgow.com"
+    },
+    {
+      "name":"Arndale Centre",
+      "lat":53.4821,
+      "lng":-2.2426,
+      "address":"Manchester, UK",
+      "phone":"+44 161 833 9851",
+      "website":"https:\/\/manchesterarndale.com"
+    },
+    {
+      "name":"Princes Street",
+      "lat":55.953,
+      "lng":-3.1883,
+      "address":"Edinburgh, UK",
+      "phone":"+44 131 529 7061",
+      "website":"https:\/\/edinburgh.org"
+    },
+    {
+      "name":"Liverpool ONE",
+      "lat":53.4031,
+      "lng":-2.9851,
+      "address":"Liverpool, UK",
+      "phone":"+44 151 232 3100",
+      "website":"https:\/\/liverpool-one.com"
+    },
+    {
+      "name":"Trinity Leeds",
+      "lat":53.7964,
+      "lng":-1.545,
+      "address":"Leeds, UK",
+      "phone":"+44 113 394 2415",
+      "website":"https:\/\/trinityleeds.com"
+    },
+    {
+      "name":"Cabot Circus",
+      "lat":51.4582,
+      "lng":-2.5844,
+      "address":"Bristol, UK",
+      "phone":"+44 117 952 9361",
+      "website":"https:\/\/cabotcircus.com"
+    },
+    {
+      "name":"Westfield Stratford City",
+      "lat":51.5432,
+      "lng":-0.0066,
+      "address":"Stratford, London, UK",
+      "phone":"+44 208 221 7300",
+      "website":"https:\/\/uk.westfield.com\/stratfordcity"
+    },
+    {
+      "name":"Victoria Square",
+      "lat":54.5973,
+      "lng":-5.9301,
+      "address":"Belfast, UK",
+      "phone":"+44 289 032 2277",
+      "website":"https:\/\/victoriasquare.com"
+    },
+    {
+      "name":"Highcross",
+      "lat":52.6369,
+      "lng":-1.1374,
+      "address":"Leicester, UK",
+      "phone":"+44 116 242 8644",
+      "website":"https:\/\/highcrossleicester.com"
+    },
+    {
+      "name":"Queen Street",
+      "lat":51.4816,
+      "lng":-3.1791,
+      "address":"Cardiff, UK",
+      "phone":"+44 292 087 1212",
+      "website":"https:\/\/visitcardiff.com"
+    },
+    {
+      "name":"The Centre MK",
+      "lat":52.0417,
+      "lng":-0.7557,
+      "address":"Milton Keynes, UK",
+      "phone":"+44 190 867 8510",
+      "website":"https:\/\/thecentremk.com"
+    },
+    {
+      "name":"Broad Street",
+      "lat":52.4787,
+      "lng":-1.9087,
+      "address":"Birmingham, UK",
+      "phone":"+44 121 693 6300",
+      "website":"https:\/\/visitbirmingham.com"
+    },
+    {
+      "name":"Union Square",
+      "lat":57.1442,
+      "lng":-2.0979,
+      "address":"Aberdeen, UK",
+      "phone":"+44 122 459 3990",
+      "website":"https:\/\/unionsquareaberdeen.com"
+    }
 ]
