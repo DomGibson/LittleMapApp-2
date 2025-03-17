@@ -97,6 +97,8 @@ function App() {
           )}
         </div>
 
+        <hr />
+
         <div className="search-results">
           {filteredLocations.map((loc, idx) => (
             <div
