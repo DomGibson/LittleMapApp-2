@@ -56,10 +56,19 @@ function App() {
     markers.current = [];
 
     locations.forEach(loc => {
+      const popupContent = `
+        <div style="font-family: Arial; font-size: 13px;">
+          <h3 style="color:#ff7f00; margin-bottom: 4px;">${loc.name}</h3>
+          <p style="margin:2px 0;"><strong>Address:</strong> ${loc.address}</p>
+          <p style="margin:2px 0;"><strong>Phone:</strong> ${loc.phone}</p>
+          <a href="${loc.website}" target="_blank" style="color:#0078A8;">Visit Website</a>
+        </div>
+      `;
+
       const marker = new mapboxgl.Marker({ color: '#ff7f00' })
         .setLngLat([loc.lng, loc.lat])
-        .addTo(map.current)
-        .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(loc.name));
+        .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popupContent))
+        .addTo(map.current);
 
       marker.getElement().addEventListener('click', () => {
         setSelectedLocation(loc);
